@@ -22,6 +22,7 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'godlygeek/tabular'
 " requires ctags:
 Plugin 'majutsushi/tagbar'
+Plugin 'jgdavey/tslime.vim'
 " requires clang-format:
 Plugin 'rhysd/vim-clang-format'
 Plugin 'nvie/vim-flake8'
@@ -387,8 +388,9 @@ set showcmd
 " => Ack searching and cope displaying
 "    requires ack.vim - it's much better than vimgrep/grep
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Use the the_silver_searcher if possible (much faster than Ack)
-if executable('ag')
+if executable('rg')
+  let g:ackprg = 'rg --vimgrep --smart-case'
+elseif executable('ag')
   let g:ackprg = 'ag --vimgrep --smart-case'
 endif
 
@@ -474,6 +476,15 @@ map <silent> <leader>bg :call ToggleBgKeymap()<CR>
 
 " vim-latex-live-preview setting
 let g:livepreview_previewer = 'open -a Preview'
+
+" tslime stuff
+let g:tslime_always_current_session = 1
+let g:tslime_always_current_window = 1
+vmap <C-c><C-c> <Plug>SendSelectionToTmux
+"nmap <C-c><C-c> <Plug>NormalModeSendToTmux
+"nmap <C-c>r <Plug>SetTmuxVars
+
+command Pep8 % ! autopep8 --max-line-length 120 -a -a -
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
