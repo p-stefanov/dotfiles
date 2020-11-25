@@ -19,14 +19,17 @@ Plugin 'mattn/emmet-vim'
 Plugin 'cohama/lexima.vim'
 Plugin 'scrooloose/nerdtree'
 "Plugin 'tmhedberg/SimpylFold'
+Plugin 'vim-syntastic/syntastic.git'
 Plugin 'godlygeek/tabular'
 " requires ctags:
 Plugin 'majutsushi/tagbar'
 Plugin 'jgdavey/tslime.vim'
 " requires clang-format:
 Plugin 'rhysd/vim-clang-format'
-Plugin 'nvie/vim-flake8'
-Plugin 'xuhdev/vim-latex-live-preview'
+Plugin 'easymotion/vim-easymotion.git'
+"Plugin 'nvie/vim-flake8'
+Plugin 'tpope/vim-fugitive'
+"Plugin 'xuhdev/vim-latex-live-preview'
 " highly recommended by vim-clang-format:
 Plugin 'kana/vim-operator-user'
 Plugin 'christoomey/vim-tmux-navigator'
@@ -201,6 +204,10 @@ set encoding=utf8
 " Use Unix as the standard file type
 set ffs=unix,dos,mac
 
+"" vertical line at 120 char
+"highlight ColorColumn ctermbg=8
+"set colorcolumn=120
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Files, backups and undo
@@ -236,10 +243,17 @@ set lbr
 set tw=500
 
 set ai "Auto indent
-set si "Smart indent
+" https://vim.fandom.com/wiki/Restoring_indent_after_typing_hash
+"set si "Smart indent
+set cindent
+set cinkeys-=0#
+set indentkeys-=0#
+
 set wrap "Wrap lines
 
 let g:lexima_enable_endwise_rules=0
+" ;( :
+let g:lexima_enable_newline_rules=0
 
 
 """"""""""""""""""""""""""""""
@@ -399,6 +413,7 @@ vnoremap <silent> gv :call VisualSelection('gv', '')<CR>
 
 " Open Ack and put the cursor in the right position
 map <leader>g :Ack 
+"set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
 
 " When you press <leader>r you can search and replace the selected text
 vnoremap <silent> <leader>r :call VisualSelection('replace', '')<CR>
@@ -461,14 +476,6 @@ map <leader>tt :TagbarToggle<cr>
 map <leader>ss :TagbarCurrentTag<cr>
 let g:tagbar_sort=0
 
-let g:multi_cursor_use_default_mapping=0
-
-" Default mapping for multi cursor
-let g:multi_cursor_next_key='<C-n>'
-"let g:multi_cursor_prev_key='<C-p>'
-let g:multi_cursor_skip_key='<C-x>'
-let g:multi_cursor_quit_key='<Esc>'
-
 " Show hidden files in NERDTree
 let NERDTreeShowHidden=1
 
@@ -484,7 +491,22 @@ vmap <C-c><C-c> <Plug>SendSelectionToTmux
 "nmap <C-c><C-c> <Plug>NormalModeSendToTmux
 "nmap <C-c>r <Plug>SetTmuxVars
 
-command Pep8 % ! autopep8 --max-line-length 120 -a -a -
+"command Pep8 % ! autopep8 --max-line-length 120 -a -a -
+
+
+" syntastic stuff
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 0
+let g:syntastic_mode_map = { 'mode': 'passive' }
+let g:syntastic_python_checkers = ['flake8']
+let g:syntastic_python_flake8_exec = '/usr/local/bin/python3'
+let g:syntastic_python_flake8_args = ['-m', 'flake8']
+
+map <leader>sc :SyntasticCheck<cr>
+map <leader>sd :SyntasticReset<cr>
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
