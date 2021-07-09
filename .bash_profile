@@ -14,6 +14,7 @@ source ~/perl5/perlbrew/etc/bashrc
 export JAVA_HOME=$(/usr/libexec/java_home)
 export PATH=$M2:$PATH:$HOME/prog/apache-maven-3.5.3/bin
 
+eval "$(pyenv init --path)"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
