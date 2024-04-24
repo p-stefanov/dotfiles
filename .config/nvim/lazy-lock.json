@@ -7,6 +7,7 @@
   "nerdtree": { "branch": "master", "commit": "f3a4d8eaa8ac10305e3d53851c976756ea9dc8e8" },
   "nvim-autopairs": { "branch": "master", "commit": "dbfc1c34bed415906395db8303c71039b3a3ffb4" },
   "nvim-lint": { "branch": "master", "commit": "2669aabb8362fdc36aced5ba864b7135636ea863" },
+  "nvim-osc52": { "branch": "main", "commit": "5e0210990b3c809ec58bbf830e0dabd4bda3a949" },
   "nvim-surround": { "branch": "main", "commit": "d47001f8ddf9646c24f16d2732d4d0255acd2121" },
   "solarized.nvim": { "branch": "main", "commit": "29476cdf701fef4d651c5ec88c0ba2bfdbc890dc" },
   "vim-fugitive": { "branch": "master", "commit": "193ba9b393931bad768c1d2eed688b0bcc240858" },

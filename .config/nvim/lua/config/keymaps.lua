@@ -28,3 +28,5 @@ mapkey("<C-l>", "TmuxNavigateRight", "n") -- Navigate Right
 vim.keymap.set("n", "<leader>fm", function()
   require("conform").format({ lsp_fallback = true })
 end, { desc = "Format buffer" })
+
+vim.keymap.set('v', '<leader>y', require('osc52').copy_visual, { desc = "Yank with osc52" })
