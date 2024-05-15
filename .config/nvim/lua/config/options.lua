@@ -24,7 +24,7 @@ opt.hlsearch = true
 
 -- Appearance
 opt.number = true
-opt.relativenumber = false
+opt.relativenumber = true
 opt.termguicolors = true
 --opt.colorcolumn = '120'
 opt.signcolumn = "yes"
