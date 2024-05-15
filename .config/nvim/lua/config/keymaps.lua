@@ -10,6 +10,13 @@ vim.keymap.set("n", "<S-l>", "gt", { silent = true, noremap = true })
 mapkey("<leader>nn", "NERDTreeToggle", "n")
 mapkey("<leader>nf", "NERDTreeFind", "n")
 
+-- Telescope fuzzy file finder
+local builtin = require('telescope.builtin')
+vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = "Telescope find_files" })
+vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = "Telescope live_grep" })
+vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = "Telescope buffers" })
+vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = "Telescope help_tags" })
+
 -- Pane and Window Navigation
 mapkey("<C-h>", "<C-w>h", "n") -- Navigate Left
 mapkey("<C-j>", "<C-w>j", "n") -- Navigate Down
