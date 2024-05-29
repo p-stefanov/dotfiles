@@ -1,7 +1,9 @@
 vim.g.mapleader = ","
 vim.g.maplocalleader = ","
+
 vim.g.lexima_enable_endwise_rules = 0
 vim.g.lexima_enable_newline_rules = 0
+
 vim.g.slime_target = "tmux"
 vim.g.slime_default_config = {socket_name = "default", target_pane = "1"}
 vim.g.slime_dont_ask_default = 1

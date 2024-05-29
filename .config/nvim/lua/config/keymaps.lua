@@ -7,6 +7,7 @@ mapkey("<leader><CR>", "noh", "n")  -- hide highlighted search
 -- Navigation
 vim.keymap.set("n", "<S-h>", "gT", { silent = true, noremap = true })
 vim.keymap.set("n", "<S-l>", "gt", { silent = true, noremap = true })
+vim.keymap.set("n", "<leader>b", ":ls<CR>:b<space>", { noremap = true, desc = "View buffer by number" })
 mapkey("<leader>nn", "NERDTreeToggle", "n")
 mapkey("<leader>nf", "NERDTreeFind", "n")
 
@@ -36,4 +37,5 @@ vim.keymap.set("n", "<leader>fm", function()
   require("conform").format({ lsp_fallback = true })
 end, { desc = "Format buffer" })
 
-vim.keymap.set('v', '<leader>y', require('osc52').copy_visual, { desc = "Yank with osc52" })
+-- Obsolete as of v0.10:
+--vim.keymap.set('v', '<leader>y', require('osc52').copy_visual, { desc = "Yank with osc52" })
