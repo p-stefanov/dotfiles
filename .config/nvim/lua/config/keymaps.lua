@@ -17,16 +17,32 @@ vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = "Telescope find_f
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = "Telescope live_grep" })
 vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = "Telescope buffers" })
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = "Telescope help_tags" })
+vim.keymap.set('n', '<leader>f ', function()
+  -- You can pass additional configuration to Telescope to change the theme, layout, etc.
+  builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
+    winblend = 10,
+    previewer = false,
+  })
+end, { desc = 'Telescope current_buffer_fuzzy_find' })
+
+-- It's also possible to pass additional configuration options.
+--  See `:help telescope.builtin.live_grep()` for information about particular keys
+vim.keymap.set('n', '<leader>f*', function()
+  builtin.live_grep {
+    grep_open_files = true,
+    prompt_title = 'Live Grep in Open Files',
+  }
+end, { desc = 'Telescope live_grep in open files' })
 
 -- Pane and Window Navigation
-mapkey("<C-h>", "<C-w>h", "n") -- Navigate Left
-mapkey("<C-j>", "<C-w>j", "n") -- Navigate Down
-mapkey("<C-k>", "<C-w>k", "n") -- Navigate Up
-mapkey("<C-l>", "<C-w>l", "n") -- Navigate Right
-mapkey("<C-h>", "wincmd h", "t") -- Navigate Left
-mapkey("<C-j>", "wincmd j", "t") -- Navigate Down
-mapkey("<C-k>", "wincmd k", "t") -- Navigate Up
-mapkey("<C-l>", "wincmd l", "t") -- Navigate Right
+--mapkey("<C-h>", "<C-w>h", "n") -- Navigate Left
+--mapkey("<C-j>", "<C-w>j", "n") -- Navigate Down
+--mapkey("<C-k>", "<C-w>k", "n") -- Navigate Up
+--mapkey("<C-l>", "<C-w>l", "n") -- Navigate Right
+--mapkey("<C-h>", "wincmd h", "t") -- Navigate Left
+--mapkey("<C-j>", "wincmd j", "t") -- Navigate Down
+--mapkey("<C-k>", "wincmd k", "t") -- Navigate Up
+--mapkey("<C-l>", "wincmd l", "t") -- Navigate Right
 mapkey("<C-h>", "TmuxNavigateLeft", "n") -- Navigate Left
 mapkey("<C-j>", "TmuxNavigateDown", "n") -- Navigate Down
 mapkey("<C-k>", "TmuxNavigateUp", "n") -- Navigate Up
