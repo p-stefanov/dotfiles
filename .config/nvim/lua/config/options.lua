@@ -34,6 +34,12 @@ opt.cmdheight = 1
 opt.scrolloff = 10
 opt.completeopt = "menuone,noinsert,noselect"
 opt.guicursor = "n-v-i-c:block-Cursor"
+opt.listchars = {
+    tab = "▸ ",
+    eol = "¬",
+    trail = "·",
+    nbsp = "␣"
+}
 
 -- Behaviour
 --opt.hidden = true
