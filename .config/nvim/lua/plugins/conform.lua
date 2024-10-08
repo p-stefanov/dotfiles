@@ -1,6 +1,7 @@
 -- https://github.com/stevearc/conform.nvim/blob/master/doc/recipes.md#lazy-loading-with-lazynvim
 return {
   "stevearc/conform.nvim",
+  enabled = true,
   event = { "BufReadPre", "BufNewFile" },
   cmd = { "ConformInfo" },
   --keys = {
