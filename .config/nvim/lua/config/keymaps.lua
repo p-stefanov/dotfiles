@@ -8,18 +8,20 @@ mapkey("<leader><CR>", "noh", "n")  -- hide highlighted search
 vim.keymap.set("n", "<S-h>", "gT", { silent = true, noremap = true })
 vim.keymap.set("n", "<S-l>", "gt", { silent = true, noremap = true })
 vim.keymap.set("n", "<leader>b", ":ls<CR>:b<space>", { noremap = true, desc = "View buffer by number" })
-mapkey("<leader>nn", "NERDTreeToggle", "n")
-mapkey("<leader>nf", "NERDTreeFind", "n")
+--mapkey("<leader>nn", "NERDTreeToggle", "n")
+--mapkey("<leader>nf", "NERDTreeFind", "n")
+mapkey("<leader>nn", "Neotree toggle", "n")
+mapkey("<leader>nf", "Neotree reveal", "n")
 
 -- Telescope fuzzy file finder
-local builtin = require('telescope.builtin')
-vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = "Telescope find_files" })
-vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = "Telescope live_grep" })
-vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = "Telescope buffers" })
-vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = "Telescope help_tags" })
+local telescope_builtin = require('telescope.builtin')
+vim.keymap.set('n', '<leader>ff', telescope_builtin.find_files, { desc = "Telescope find_files" })
+vim.keymap.set('n', '<leader>fg', telescope_builtin.live_grep, { desc = "Telescope live_grep" })
+vim.keymap.set('n', '<leader>fb', telescope_builtin.buffers, { desc = "Telescope buffers" })
+vim.keymap.set('n', '<leader>fh', telescope_builtin.help_tags, { desc = "Telescope help_tags" })
 vim.keymap.set('n', '<leader>f ', function()
   -- You can pass additional configuration to Telescope to change the theme, layout, etc.
-  builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
+  telescope_builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
     winblend = 10,
     previewer = false,
   })
@@ -28,7 +30,7 @@ end, { desc = 'Telescope current_buffer_fuzzy_find' })
 -- It's also possible to pass additional configuration options.
 --  See `:help telescope.builtin.live_grep()` for information about particular keys
 vim.keymap.set('n', '<leader>f*', function()
-  builtin.live_grep {
+  telescope_builtin.live_grep {
     grep_open_files = true,
     prompt_title = 'Live Grep in Open Files',
   }
@@ -55,3 +57,6 @@ end, { desc = "Format buffer" })
 
 -- Obsolete as of v0.10:
 --vim.keymap.set('v', '<leader>y', require('osc52').copy_visual, { desc = "Yank with osc52" })
+
+local hop = require("hop")
+vim.keymap.set("", "s", hop.hint_words, {remap=true})
