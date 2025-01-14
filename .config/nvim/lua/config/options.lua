@@ -59,3 +59,9 @@ opt.mouse = ""
 opt.clipboard = vim.env.SSH_TTY and "" or "unnamedplus" -- Sync with system clipboard
 --opt.modifiable = true
 opt.encoding = "UTF-8"
+
+vim.diagnostic.config({
+  float = {
+    border = "rounded",
+  },
+})
